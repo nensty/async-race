@@ -1,3 +1,9 @@
 header {
+  height: 5rem;
+  width: 100%;
 
+  .switch-wrapper {
+    display: flex;
+    column-gap: 2rem;
+  }
 }
