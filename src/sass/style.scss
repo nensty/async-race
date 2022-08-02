@@ -1,0 +1,14 @@
+@import "node_modules/normalize-scss/sass/normalize/import-now";
+
+// Abstracts
+@import "abstracts/constants";
+@import "abstracts/mixins";
+@import "abstracts/placeholders";
+
+// Base
+@import "base/base";
+
+// Components
+@import "components/header";
+@import "components/main";
+@import "components/footer";
