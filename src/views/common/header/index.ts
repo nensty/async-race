@@ -1,4 +1,8 @@
 import { createButtonWithLabel, createElementWithClassname } from 'src/utils';
+import {
+  showGarageViewOnClick,
+  showWinnersViewOnClick,
+} from 'src/views/common/header/utils';
 
 export const renderHeader = () => {
   const header = createElementWithClassname('header', 'header');
@@ -9,6 +13,9 @@ export const renderHeader = () => {
   header.appendChild(switchWrapper);
   switchWrapper.appendChild(garageViewButton);
   switchWrapper.appendChild(winnersViewButton);
+
+  showGarageViewOnClick(garageViewButton);
+  showWinnersViewOnClick(winnersViewButton);
 
   return header;
 };
