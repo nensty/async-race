@@ -3,14 +3,17 @@ import { renderTitle } from 'src/views/common/components/title';
 import { renderCurrentPageNumber } from 'src/views/common/components/page-number';
 import { renderCarCard } from 'src/views/garage/components';
 import { getAllCars } from 'src/api';
+import { renderCarManagement } from 'src/views/garage/components/car-management';
 
 export const renderGarageView = async () => {
   const allCars = await getAllCars();
   const wrapper = createElementWithClassname('div', 'view garage-view');
+  const carConfiguration = renderCarManagement();
   const carCardsWrapper = createElementWithClassname('div', 'car-cards__wrapper');
   const title = renderTitle('Garage', allCars.length);
   const page = renderCurrentPageNumber();
 
+  wrapper.appendChild(carConfiguration);
   wrapper.appendChild(title);
   wrapper.appendChild(page);
   wrapper.appendChild(carCardsWrapper);
