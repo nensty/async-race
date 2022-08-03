@@ -1,8 +1,8 @@
 import { createElementWithClassname } from 'src/utils';
 
-export const renderTitle = () => {
+export const renderTitle = (pageName: string, numberOfItems: number) => {
   const title = createElementWithClassname('h2', 'garage-title');
-  title.innerText = 'Garage';
+  title.innerText = `${pageName} (${numberOfItems})`;
 
   return title;
 };

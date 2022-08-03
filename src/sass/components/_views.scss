@@ -1,5 +1,9 @@
 .view {
   display: unset;
+
+  p {
+    color: $color-secondary-light;
+  }
 }
 
 .hidden {
