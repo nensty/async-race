@@ -7,7 +7,7 @@ import { renderResetResult } from 'src/views/garage/components/car-management/co
 
 export const renderCarManagement = () => {
   const managementWrapper = createElementWithClassname('div', 'cars-management');
-  const managementControlsWrapper = createElementWithClassname('div', 'cars-management__controls');
+  const managementControlsWrapper = createElementWithClassname('div', 'cars-management__row controls');
   const createCar = renderCreateCar();
   const updateCar = renderUpdateCar();
   const generateCars = renderGenerateCars();

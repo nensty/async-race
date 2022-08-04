@@ -1,0 +1,12 @@
+.cars-management {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+  }
+}
