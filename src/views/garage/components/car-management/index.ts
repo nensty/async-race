@@ -5,11 +5,11 @@ import { renderGenerateCars } from 'src/views/garage/components/car-management/c
 import { renderStartRace } from 'src/views/garage/components/car-management/components/start-race';
 import { renderResetResult } from 'src/views/garage/components/car-management/components/reset-result';
 
-export const renderCarManagement = () => {
+export const renderCarManagement = (carsListWrapper: HTMLElement) => {
   const managementWrapper = createElementWithClassname('div', 'cars-management');
   const managementControlsWrapper = createElementWithClassname('div', 'cars-management__row controls');
-  const createCar = renderCreateCar();
-  const updateCar = renderUpdateCar();
+  const createCar = renderCreateCar(carsListWrapper);
+  const updateCar = renderUpdateCar(carsListWrapper);
   const generateCars = renderGenerateCars();
   const startRace = renderStartRace();
   const resetResult = renderResetResult();

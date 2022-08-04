@@ -8,8 +8,8 @@ import { renderCarManagement } from 'src/views/garage/components/car-management'
 export const renderGarageView = async () => {
   const allCars = await getAllCars();
   const wrapper = createElementWithClassname('div', 'view garage-view');
-  const carConfiguration = renderCarManagement();
   const carCardsWrapper = createElementWithClassname('div', 'car-cards__wrapper');
+  const carConfiguration = renderCarManagement(carCardsWrapper);
   const title = renderTitle('Garage', allCars.length);
   const page = renderCurrentPageNumber();
 
