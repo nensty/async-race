@@ -9,7 +9,7 @@ export const renderCarHeader = (car: Car) => {
 
   carTitle.innerText = car.name;
 
-  carHeader.appendChild(renderSelectButton(car.id || 0));
+  carHeader.appendChild(renderSelectButton(car));
   carHeader.appendChild(renderRemoveCarButton(car.id || 0));
   carHeader.appendChild(carTitle);
 
