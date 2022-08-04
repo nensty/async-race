@@ -8,6 +8,7 @@ export const renderSelectButton = (car: Car) => {
   selectButton.innerText = 'Select';
 
   selectButton.addEventListener('click', async () => {
+    localStorage.setItem('selectedCar', `${car.id}`);
     await getCarById(car.id || 0);
     const carNameInput = <HTMLInputElement>document.querySelector('.car-update__wrapper.car-name');
     const carColorInput = <HTMLInputElement>document.querySelector('.car-update__wrapper.car-color');
