@@ -8,6 +8,8 @@ export const renderCarCard = (car: Car) => {
   const carHeader = renderCarHeader(car);
   const carMainLine = renderCarMain(car);
 
+  carWrapper.id = `${car.id}`;
+
   carWrapper.appendChild(carHeader);
   carWrapper.appendChild(carMainLine);
 

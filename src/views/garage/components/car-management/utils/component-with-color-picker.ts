@@ -4,7 +4,7 @@ import { renderCarCard } from 'src/views/garage/components';
 
 export const renderComponentWithColorPicker = (
   action: string,
-  actionFunction: (name: string, color: string) => Promise<Car>,
+  actionFunction: <T extends Car>(args: T) => Promise<Car>,
   carCardsWrapper: HTMLElement,
 ) => {
   const createCarWrapper = createElementWithClassname('div', `car-${action}__wrapper cars-management__row`);
@@ -20,7 +20,7 @@ export const renderComponentWithColorPicker = (
   createCarWrapper.appendChild(submitButton);
 
   submitButton.addEventListener('click', async () => {
-    const newCar = await actionFunction(carNameInput.value, carColorSelector.value);
+    const newCar = await actionFunction({ name: carNameInput.value, color: carColorSelector.value });
     carCardsWrapper.appendChild(renderCarCard(newCar));
 
     console.log(newCar);
