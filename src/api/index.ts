@@ -5,7 +5,7 @@ export const getAllCars = (): Promise<Car[]> =>
   fetch(`${baseUrl}/garage`).then((response) => response.json());
 
 export const getCarById = (id: number): Promise<Car> =>
-  fetch(`${baseUrl}/garage/:${id}`).then((response) => response.json());
+  fetch(`${baseUrl}/garage/${id}`).then((response) => response.json());
 
 export const createCarByApi = ({ name, color }: Car): Promise<Car> =>
   fetch(`${baseUrl}/garage`, {
