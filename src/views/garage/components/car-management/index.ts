@@ -10,7 +10,7 @@ export const renderCarManagement = (carsListWrapper: HTMLElement) => {
   const managementControlsWrapper = createElementWithClassname('div', 'cars-management__row controls');
   const createCar = renderCreateCar(carsListWrapper);
   const updateCar = renderUpdateCar(carsListWrapper);
-  const generateCars = renderGenerateCars();
+  const generateCars = renderGenerateCars(carsListWrapper);
   const startRace = renderStartRace();
   const resetResult = renderResetResult();
 
