@@ -10,7 +10,7 @@ export const renderGarageView = async () => {
   const wrapper = createElementWithClassname('div', 'view garage-view');
   const carCardsWrapper = createElementWithClassname('div', 'car-cards__wrapper');
   const carConfiguration = renderCarManagement(carCardsWrapper);
-  const title = renderTitle('Garage', allCars.length);
+  const title = await renderTitle('Garage', getAllCars);
   const page = renderCurrentPageNumber();
 
   wrapper.appendChild(carConfiguration);

@@ -3,6 +3,7 @@ import {
   createComponentWithColorPicker,
 } from 'src/views/garage/components/car-management/utils/create-component-with-color-picker';
 import { renderCarCard } from 'src/views/garage/components';
+import { updateCarsNumber } from 'src/views/garage/utils/update-cars-number';
 
 export const renderCreateCar = (wrapper: HTMLElement) => {
   const createCarWrapper = createComponentWithColorPicker('create');
@@ -13,6 +14,8 @@ export const renderCreateCar = (wrapper: HTMLElement) => {
   submitButton.addEventListener('click', async () => {
     const newCar = await createCarByApi({ name: carNameInput.value, color: carColorSelector.value });
     wrapper.appendChild(renderCarCard(newCar));
+
+    await updateCarsNumber();
   });
 
   return createCarWrapper;
