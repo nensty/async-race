@@ -6,7 +6,7 @@ import { getAllCars } from 'src/api';
 export const renderWinnersView = async () => {
   const wrapper = createElementWithClassname('div', 'view winners-view hidden');
   const title = await renderTitle('Winners', getAllCars);
-  const page = renderCurrentPageNumber();
+  const page = renderCurrentPageNumber(+localStorage.getItem('page')!);
 
   wrapper.appendChild(title);
   wrapper.appendChild(page);

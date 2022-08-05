@@ -17,7 +17,7 @@ body {
 .primary-button {
   border: none;
   background-color: $color-main-light;
-  padding: 2rem;
+  min-height: 4rem;
   border-radius: 0.5rem;
   cursor: pointer;
 }

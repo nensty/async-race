@@ -1,8 +1,8 @@
 import { baseUrl } from 'src/api/constants';
 import { Car } from 'src/types';
 
-export const getAllCars = (): Promise<Car[]> =>
-  fetch(`${baseUrl}/garage`).then((response) => response.json());
+export const getAllCars = (page = 1, limit = 7): Promise<Car[]> =>
+  fetch(`${baseUrl}/garage/?_page=${page}&_limit=${limit}`).then((response) => response.json());
 
 export const getCarById = (id: number): Promise<Car> =>
   fetch(`${baseUrl}/garage/${id}`).then((response) => response.json());
