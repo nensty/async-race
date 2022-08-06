@@ -1,6 +1,8 @@
 import { createElementWithClassname } from 'src/utils';
 import { createCarSvg } from 'src/views/garage/utils/create-svg';
-import { Car } from 'src/types';
+import { Car, Status } from 'src/types';
+import { startEngine } from 'src/api';
+import { CAR_WIDTH } from 'src/views/garage/constants';
 
 export const renderCarConfiguration = (car: Car) => {
   const carConfiguration = createElementWithClassname('div', 'car-card__configuration');
@@ -11,6 +13,15 @@ export const renderCarConfiguration = (car: Car) => {
   carConfiguration.appendChild(startButton);
   carConfiguration.appendChild(stopButton);
   carConfiguration.appendChild(carImage);
+
+  carImage.id = `${car.id}`;
+
+  startButton.addEventListener('click', async () => {
+    const carDrivingSettings = await startEngine({ id: car.id!, status: Status.STARTED });
+
+    carImage.style.transform = `translateX(${document.body.offsetWidth - CAR_WIDTH}px)`;
+    carImage.style.transition = `ease ${carDrivingSettings.distance / carDrivingSettings.velocity}ms`;
+  });
 
   return carConfiguration;
 };
