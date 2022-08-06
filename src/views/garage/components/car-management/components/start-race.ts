@@ -3,13 +3,15 @@ import { Car } from 'src/types';
 import { startEngine } from 'src/views/garage/utils/start-engine';
 
 export const renderStartRace = (allCars: Car[]) => {
-  const generateCarsButton = createElementWithClassname('button', 'race secondary-button');
+  const startRaceButton = createElementWithClassname('button', 'race secondary-button');
 
-  generateCarsButton.innerText = 'race'.toUpperCase();
+  startRaceButton.innerText = 'race'.toUpperCase();
 
-  generateCarsButton.addEventListener('click', async () => {
-    await Promise.all(allCars.map((car) => startEngine(car)));
+  startRaceButton.addEventListener('click', async () => {
+    await Promise.any(allCars.map((car) => startEngine(car)
+      .then((currentCar) => currentCar)))
+      .then(car => car);
   });
 
-  return generateCarsButton;
+  return startRaceButton;
 };

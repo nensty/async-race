@@ -1,9 +1,17 @@
 import { createElementWithClassname } from 'src/utils';
+import { Car } from 'src/types';
+import { stopEngine } from 'src/views/garage/utils/stop-engine';
 
-export const renderResetResult = () => {
-  const generateCarsButton = createElementWithClassname('button', 'reset secondary-button');
+export const renderResetResult = (allCars: Car[]) => {
+  const resetResultButton = createElementWithClassname('button', 'reset secondary-button');
 
-  generateCarsButton.innerText = 'reset'.toUpperCase();
+  resetResultButton.innerText = 'reset'.toUpperCase();
 
-  return generateCarsButton;
+  resetResultButton.addEventListener('click', async () => {
+    await Promise.all(allCars.map((car) => stopEngine(car)
+      .then((currentCar) => currentCar)))
+      .then(car => car);
+  });
+
+  return resetResultButton;
 };

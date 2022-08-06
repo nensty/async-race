@@ -13,7 +13,7 @@ export const renderCarManagement = (carsListWrapper: HTMLElement, allCars: Car[]
   const updateCar = renderUpdateCar(carsListWrapper);
   const generateCars = renderGenerateCars(carsListWrapper);
   const startRace = renderStartRace(allCars);
-  const resetResult = renderResetResult();
+  const resetResult = renderResetResult(allCars);
 
   managementWrapper.append(createCar);
   managementWrapper.append(updateCar);

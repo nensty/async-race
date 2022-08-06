@@ -14,6 +14,8 @@ export interface CarDrivingSettings {
   distance: number;
 }
 
+export type FullCarInfo = CarDrivingSettings & Car;
+
 export enum Status {
   STARTED = 'started',
   STOPPED = 'stopped',

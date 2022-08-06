@@ -1,8 +1,8 @@
 import { createElementWithClassname } from 'src/utils';
 import { createCarSvg } from 'src/views/garage/utils/create-svg';
-import { Car, Status } from 'src/types';
-import { startStopEngine } from 'src/api';
+import { Car } from 'src/types';
 import { startEngine } from 'src/views/garage/utils/start-engine';
+import { stopEngine } from 'src/views/garage/utils/stop-engine';
 
 export const renderCarConfiguration = (car: Car) => {
   const carConfiguration = createElementWithClassname('div', 'car-card__configuration');
@@ -21,10 +21,7 @@ export const renderCarConfiguration = (car: Car) => {
   });
 
   stopButton.addEventListener('click', async () => {
-    await startStopEngine({ id: car.id!, status: Status.STOPPED });
-
-    carImage.style.transform = 'none';
-    carImage.style.transition = 'none';
+    await stopEngine(car);
   });
 
   return carConfiguration;
