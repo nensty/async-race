@@ -36,7 +36,7 @@ export const removeCarById = (id: number): Promise<Record<string, never>> =>
     method: 'DELETE',
   }).then((response) => response.json());
 
-export const startEngine = ({ id, status }: CarState): Promise<CarDrivingSettings> =>
+export const startStopEngine = ({ id, status }: CarState): Promise<CarDrivingSettings> =>
   fetch(`${baseUrl}/engine?id=${id}&status=${status}`, {
     method: 'PATCH',
   }).then((response) => response.json());
