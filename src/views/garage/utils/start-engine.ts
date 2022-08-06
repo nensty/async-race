@@ -3,7 +3,7 @@ import { Car, Status } from 'src/types';
 import { CAR_WIDTH } from 'src/views/garage/constants';
 
 export const startEngine = async (car: Car) => {
-  const carCard = <HTMLDivElement>document.querySelector('.car-card__configuration');
+  const carCard = <HTMLDivElement>document.getElementById(`${car.id}`);
   const carImage = <SVGElement>carCard.querySelector('svg');
   const carDrivingSettings = await startStopEngine({ id: car.id!, status: Status.STARTED });
 

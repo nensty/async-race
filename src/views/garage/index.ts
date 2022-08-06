@@ -11,7 +11,7 @@ export const renderGarageView = async () => {
   const allCars = await getAllCars();
   const wrapper = createElementWithClassname('div', 'view garage-view');
   const carCardsWrapper = createElementWithClassname('div', 'car-cards__wrapper');
-  const carConfiguration = renderCarManagement(carCardsWrapper);
+  const carConfiguration = renderCarManagement(carCardsWrapper, allCars);
   const title = await renderTitle('Garage', getAllCars);
   const page = renderCurrentPageNumber(+localStorage.getItem('page')!);
   const pagination = renderPaginationControls(carCardsWrapper);
