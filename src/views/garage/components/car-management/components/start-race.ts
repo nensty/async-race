@@ -7,20 +7,7 @@ export const renderStartRace = (allCars: Car[]) => {
 
   startRaceButton.innerText = 'race'.toUpperCase();
   const handleClick = async () => {
-    await Promise.all(allCars.map((car) => startEngine(car)))
-      .then((currentCars) => currentCars
-        .sort((carA, carB) => {
-          if (carA.distance / carA.velocity < carB.distance / carB.velocity) {
-            return -1;
-          }
-
-          if (carA.distance / carA.velocity > carB.distance / carB.velocity) {
-            return 1;
-          }
-
-          return 0;
-        }))
-      .then(cars => cars[0])
+    return Promise.any(allCars.map((car) => startEngine(car)))
       .then((firstCar) => {
         const carCard = <HTMLDivElement>document.getElementById(`${firstCar.id}`);
         const carImage = <SVGElement>carCard.querySelector('svg');

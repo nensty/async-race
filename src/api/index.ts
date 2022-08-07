@@ -1,5 +1,5 @@
 import { baseUrl } from 'src/api/constants';
-import { Car, CarDrivingSettings, CarState } from 'src/types';
+import { Car, CarState } from 'src/types';
 
 export const getAllCars = (page = 1, limit = 7): Promise<Car[]> =>
   fetch(`${baseUrl}/garage/?_page=${page}&_limit=${limit}`).then((response) => response.json());
@@ -36,8 +36,14 @@ export const removeCarById = (id: number): Promise<Record<string, never>> =>
     method: 'DELETE',
   }).then((response) => response.json());
 
-export const startStopEngine = ({ id, status }: CarState): Promise<CarDrivingSettings> =>
+export const startStopEngine = ({ id, status }: CarState) =>
   fetch(`${baseUrl}/engine?id=${id}&status=${status}`, {
     method: 'PATCH',
-  }).then((response) => response.json());
+  }).then((response) => {
+    if (!response.ok) {
+      return response;
+    }
+
+    return response.json();
+  }).catch(error => error);
 
