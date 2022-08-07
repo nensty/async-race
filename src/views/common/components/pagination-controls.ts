@@ -3,6 +3,7 @@ import { getAllCars } from 'src/api';
 import { removeAllChilds } from 'src/views/common/utils/remove-all-childs';
 import { renderAllCarCards } from 'src/views/garage/utils/render-all-car-cards';
 import { renderCurrentPageNumber } from 'src/views/common/components/page-number';
+import { renderCarManagement } from 'src/views/garage/components/car-management';
 
 export const renderPaginationControls = (wrapper: HTMLElement) => {
   const paginationWrapper = <HTMLDivElement>createElementWithClassname('div', 'pagination-wrapper');
@@ -25,6 +26,7 @@ export const renderPaginationControls = (wrapper: HTMLElement) => {
 
     localStorage.setItem('page', (page - 1).toString());
     const cars = await getAllCars(page - 1);
+    renderCarManagement(wrapper, cars);
 
     removeAllChilds(wrapper, allCarCards);
     renderAllCarCards(wrapper, cars);
@@ -38,6 +40,7 @@ export const renderPaginationControls = (wrapper: HTMLElement) => {
 
     const cars = await getAllCars(page + 1);
     localStorage.setItem('page', (page + 1).toString());
+    renderCarManagement(wrapper, cars);
 
     removeAllChilds(wrapper, allCarCards);
     renderAllCarCards(wrapper, cars);
