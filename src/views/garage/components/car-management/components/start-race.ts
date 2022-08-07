@@ -27,7 +27,7 @@ export const renderStartRace = (allCars: Car[]) => {
 
         carImage.addEventListener('transitionend', () => {
           alert(`${firstCar.name} went first, [${(firstCar.distance / firstCar.velocity / 1000).toFixed(2)}s]`);
-        });
+        }, false);
       });
   };
 
