@@ -9,8 +9,8 @@ const generateTableCell = (text: string) => {
   return cell;
 };
 
-export const createTableRow = (tableHead: HTMLTableElement, { id, name, distance, velocity }: FullCarInfo) => {
-  const row = tableHead.insertRow(1);
+export const createTableRow = (tableHead: HTMLTableSectionElement, { id, name, distance, velocity }: FullCarInfo) => {
+  const row = tableHead.insertRow();
 
   const trId = generateTableCell(`${id}`);
   const trCar = <HTMLTableElement>createElementWithClassname('span', 'winners-table winners-table__tr');
@@ -19,7 +19,6 @@ export const createTableRow = (tableHead: HTMLTableElement, { id, name, distance
   const trBestTime = generateTableCell((distance / velocity).toFixed(2));
 
   row.style.color = 'white';
-  row.style.display = 'flex';
   row.style.columnGap = '2rem';
 
   row.insertCell(0).appendChild(trId);
@@ -37,14 +36,22 @@ export const createTable = (wrapper: HTMLDivElement) => {
 
   const tableBody = <HTMLBodyElement>createElementWithClassname('tbody', 'winners-table winners-table__body');
   const tableHead = table.createTHead();
-  const tableHeadRow = tableHead.insertRow(0);
-  tableHeadRow.insertCell(0).textContent = 'Number';
-  tableHeadRow.insertCell(1).textContent = 'Car';
-  tableHeadRow.insertCell(2).textContent = 'Name';
-  tableHeadRow.insertCell(3).textContent = 'Wins';
-  tableHeadRow.insertCell(4).textContent = 'Best Time';
+  const tableHeadRow = tableHead.insertRow();
 
-  table.appendChild(table.createTHead());
+  const number = generateTableCell('Number');
+  const car = generateTableCell('Car');
+  const name = generateTableCell('Name');
+  const wins = generateTableCell('Wins');
+  const time = generateTableCell('Best Time');
+
+  tableHeadRow.insertCell(0).appendChild(number);
+  tableHeadRow.insertCell(1).appendChild(car);
+  tableHeadRow.insertCell(2).appendChild(name);
+  tableHeadRow.insertCell(3).appendChild(wins);
+  tableHeadRow.insertCell(4).appendChild(time);
+
+  tableHead.appendChild(tableHeadRow);
+  table.appendChild(tableHead);
   table.appendChild(tableBody);
 
   wrapper.appendChild(table);

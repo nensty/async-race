@@ -12,14 +12,13 @@ export const renderStartRace = (allCars: Car[]) => {
       .then((firstCar) => {
         const carCard = <HTMLDivElement>document.getElementById(`${firstCar.id}`);
         const carImage = <SVGElement>carCard.querySelector('svg');
-        const tbody = <HTMLDivElement>document.querySelector('tbody');
-        const thead = <HTMLDivElement>document.querySelector('thead');
+        const tbody = <HTMLTableSectionElement>document.querySelector('tbody');
 
         carImage.addEventListener('transitionend', () => {
           alert(`${firstCar.name} went first, [${(firstCar.distance / firstCar.velocity / 1000).toFixed(2)}s]`);
         }, false);
 
-        const row = createTableRow(thead, firstCar);
+        const row = createTableRow(tbody, firstCar);
         tbody.appendChild(row);
       });
   };
