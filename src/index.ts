@@ -1,4 +1,4 @@
-import "./sass/style.scss";
-import { renderApp } from "./views";
+import './sass/style.scss';
+import { renderApp } from './views';
 
 renderApp();

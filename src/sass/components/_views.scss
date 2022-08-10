@@ -1,0 +1,18 @@
+.view {
+  display: unset;
+
+  p {
+    color: $color-white;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.pagination-wrapper {
+  padding: 2rem 0 0;
+  display: flex;
+  column-gap: 1rem;
+  align-items: center;
+}
